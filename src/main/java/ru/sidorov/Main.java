@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 public class Main {
     public static void main(String[] args) {
         if (args.length != 1) {
-            System.err.println("Usage: java -jar GroupLines.jar <file_path>");
+            System.err.println("Usage: java -Xmx1G -jar target/TestSoft-1.0-SNAPSHOT.jar lng.txt");
             return;
         }
 
@@ -76,9 +76,9 @@ public class Main {
             groups.sort((g1, g2) -> Integer.compare(g2.size(), g1.size()));
 
             try (BufferedWriter writer = Files.newBufferedWriter(Paths.get("output.txt"))) {
-                writer.write("Number of groups with more than one element: " + groups.size() + "\n");
+                writer.write("Количество групп с более чем одним элементом: " + groups.size() + "\n");
                 for (int i = 0; i < groups.size(); i++) {
-                    writer.write("Group " + (i + 1) + "\n");
+                    writer.write("Группа " + (i + 1) + "\n");
                     for (String groupLine : groups.get(i)) {
                         writer.write(groupLine + "\n");
                     }
@@ -91,6 +91,6 @@ public class Main {
         }
 
         long endTime = System.currentTimeMillis();
-        System.out.println("Execution time: " + (endTime - startTime) / 1000 + "s");
+        System.out.println("Время работы метода: " + (endTime - startTime) / 1000 + "с");
     }
 }
